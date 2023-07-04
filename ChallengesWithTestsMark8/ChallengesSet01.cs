@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
+using System.Net.Security;
 
 namespace ChallengesWithTestsMark8
 {
@@ -6,7 +8,7 @@ namespace ChallengesWithTestsMark8
     {
         public bool AreTwoNumbersTheSame(int num1, int num2)
         {
-            if(num1 == num2)
+            if (num1 == num2)
             {
                 return true;
             }
@@ -18,32 +20,47 @@ namespace ChallengesWithTestsMark8
 
         public double Subtract(double minuend, double subtrahend)
         {
-            throw new NotImplementedException();
+            return minuend - subtrahend;
         }
 
-        public int Add(int number1, int number2)
+        public int Add(int addend1, int addend2)
         {
-            throw new NotImplementedException();
+            return addend1 + addend2;
         }
 
         public int GetSmallestNumber(int number1, int number2)
         {
-            throw new NotImplementedException();
+
+            {
+                return number1 < number2 ? number1 : number2;
+            }
+
         }
 
         public long Multiply(long factor1, long factor2)
         {
-            throw new NotImplementedException();
+            return factor1 * factor2;
         }
 
-        public string GetGreeting(string nameOfPerson)
+        public string GetGreeting(string personName)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrWhiteSpace(personName))
+            {
+                return "Hello!";
+            }
+            else
+            {
+                return $"Hello, {personName}!";
+            }
         }
 
         public string GetHey()
         {
-            throw new NotImplementedException();
+            string hey = "HEY!";
+            Console.WriteLine(hey);
+            return hey;
+
         }
     }
 }
+
