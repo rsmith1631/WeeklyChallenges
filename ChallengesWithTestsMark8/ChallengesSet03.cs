@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Transactions;
 
 namespace ChallengesWithTestsMark8
 {
@@ -9,94 +8,148 @@ namespace ChallengesWithTestsMark8
     {
         public bool ArrayContainsAFalse(bool[] vals)
         {
-             foreach (bool val in vals)
+            for (int i = 0; i < vals.Length; i++)
             {
-                if (!val)
+                if (vals[i] == false)
                 {
                     return true;
                 }
             }
+
             return false;
-            
         }
 
         public bool IsSumOfOddsOdd(IEnumerable<int> numbers)
         {
-            if (numbers == null)
+            if (numbers == null || numbers.Count() == 0)
             {
                 return false;
             }
-            return (numbers.Sum() % 2 != 0);
+
+            var sum = numbers.Sum();
+
+            return (sum % 2 != 0);
         }
 
         public bool PasswordContainsUpperLowerAndNumber(string password)
         {
-            bool isUpper = false;
-            bool isLower = false;
-            bool isNumber = false;
+            var isLower = false;
+            var isUpper = false;
+            var isNumber = false;
 
-            foreach (char c in password)
+            for (int i = 0; i < password.Length; i++)
             {
-                if (char.IsUpper(c))
-                {
-                    isUpper = true;
-                }
-                else if (char.IsLower(c))
+                if (char.IsLower(password[i]))
                 {
                     isLower = true;
                 }
-                else if (char.IsDigit(c))
+
+                if (char.IsUpper(password[i]))
+                {
+                    isUpper = true;
+                }
+
+                if (char.IsNumber(password[i]))
                 {
                     isNumber = true;
                 }
             }
-            return isUpper && isLower && isNumber;
+
+            if (isLower == true && isUpper == true && isNumber == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public char GetFirstLetterOfString(string val)
         {
-            return val.FirstOrDefault();
+            return val.First();
         }
 
         public char GetLastLetterOfString(string val)
         {
-            return val.LastOrDefault();
+            return val[val.Length - 1];
+
         }
 
         public decimal Divide(decimal dividend, decimal divisor)
         {
-           if (divisor == 0)
+            if (divisor == 0)
             {
                 return 0;
             }
+
             return dividend / divisor;
+
         }
 
         public int LastMinusFirst(int[] nums)
         {
-            return nums.Last() - nums.First();
+            return nums[nums.Length - 1] - nums[0];
         }
 
         public int[] GetOddsBelow100()
         {
-            List<int> oddsList = new List<int>();
-            for (int i = 1; i < 100; i++)
+            var list = new List<int>();
+
+            for (int i = 0; i < 100; i++)
             {
-                if (i % 2 != 0) 
+                if (i % 2 != 0)
                 {
-                    oddsList.Add(i);
+                    list.Add(i);
                 }
             }
-            return oddsList.ToArray();
+
+            return list.ToArray();
         }
 
         public void ChangeAllElementsToUppercase(string[] words)
         {
-
             for (int i = 0; i < words.Length; i++)
             {
                 words[i] = words[i].ToUpper();
             }
+
+        }
+
+        public char FindMissingLetter(char[] array)
+        {
+            char[] letters = "abcdefghijklmnopqrxtuvwxyz".ToCharArray();
+
+            if (char.IsUpper(array[0]))
+            {
+                letters = "abcdefghijklmnopqrxtuvwxyz".ToUpper().ToCharArray();
+            }
+
+            var place = 0;
+
+
+            for (int j = 0; j < letters.Length; j++)
+            {
+                if (array[0] == letters[j])
+                {
+                    place = j;
+                    break;
+                }
+            }
+
+            char missing = ' ';
+
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] != letters[place])
+                {
+                    missing = letters[place];
+                    break;
+                }
+                place++;
+            }
+
+            return missing;
         }
     }
 }

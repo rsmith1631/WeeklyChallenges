@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-using System;
-using System.Net.Security;
+﻿using System;
 
 namespace ChallengesWithTestsMark8
 {
@@ -23,43 +21,44 @@ namespace ChallengesWithTestsMark8
             return minuend - subtrahend;
         }
 
-        public int Add(int addend1, int addend2)
+        public int Add(int number1, int number2)
         {
-            return addend1 + addend2;
+            return number1 + number2;
         }
 
         public int GetSmallestNumber(int number1, int number2)
         {
-
+            if (number1 < number2)
             {
-                return number1 < number2 ? number1 : number2;
+                return number1;
             }
-
+            else
+            {
+                return number2;
+            }
         }
 
         public long Multiply(long factor1, long factor2)
         {
-            return factor1 * factor2;
+            return (long)factor1 * factor2;
         }
 
-        public string GetGreeting(string personName)
+        public string GetGreeting(string nameOfPerson)
         {
-            if (string.IsNullOrWhiteSpace(personName))
+            if (nameOfPerson != "")
             {
-                return "Hello!";
+                return $"Hello, {nameOfPerson}!";
             }
             else
             {
-                return $"Hello, {personName}!";
+                return "Hello!";
             }
+
         }
 
         public string GetHey()
         {
-            string hey = "HEY!";
-            Console.WriteLine(hey);
-            return hey;
-
+            return "HEY!";
         }
     }
 }
