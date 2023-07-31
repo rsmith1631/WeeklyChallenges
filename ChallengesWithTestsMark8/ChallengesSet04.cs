@@ -99,19 +99,11 @@ namespace ChallengesWithTestsMark8
 
         public int Factorial(int number)
         {
-            var factorial = 1;
-
-            if (number < 0)
+            if (number == 0)
             {
-                throw new ArgumentOutOfRangeException();
+                return 1;
             }
-
-            for (int i = number; i > 0; i--)
-            {
-                factorial *= i;
-            }
-
-            return factorial;
+            return number * Factorial(number - 1);
         }
     }
 }
