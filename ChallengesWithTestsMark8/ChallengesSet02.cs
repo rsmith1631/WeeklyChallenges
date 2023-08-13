@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 
 namespace ChallengesWithTestsMark8
 {
-    public class ChallengesSet02
+    public class ChallengesSet02  
     {
         public bool CharacterIsALetter(char c)
         {
@@ -13,14 +14,16 @@ namespace ChallengesWithTestsMark8
 
         public bool CountOfElementsIsEven(string[] vals)
         {
-            if (vals.Length % 2 == 0)
-            {
-                return true;
-            }
-            else
+       
+               if (vals.Length - 1 % 2 == 0)
+                {
+                return true; 
+                }
+               else
             {
                 return false;
             }
+            
         }
 
         public bool IsNumberEven(int number)
@@ -37,7 +40,70 @@ namespace ChallengesWithTestsMark8
 
         public bool IsNumberOdd(int num)
         {
-            if (num % 2 != 0)
+           var answer = (num % 2 != 0) ? true : false;
+            return false;
+        }
+
+        public double SumOfMinAndMax(IEnumerable<double> numbers)
+        {
+            return numbers.Min() + numbers.Max();
+        }
+
+        public int GetLengthOfShortestString(string str1, string str2)
+        {
+            var strin1 = 0;
+           for (int i = 0; i < str1.Length; i++)
+            {
+                strin1 = str1.Length;
+            }
+            var strin2 = 0;
+           for (int i =0; i < str2.Length; i++)
+            {
+                strin2 = str2[i];
+            }
+           if (strin1 < strin2)
+            {
+                return strin1;
+            }
+           else
+            {
+                return strin2;
+            }
+
+        }
+
+        public int Sum(int[] numbers)
+        {
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                return numbers[i];
+            }
+            return numbers.Sum();
+        }
+
+        public int SumEvens(int[] numbers)
+        {
+            var sumEvens = 0;
+          for (int i = 0; i < numbers.Length; i++)
+          {
+                if (numbers[i] % 2 == 0)
+                {
+                    sumEvens = numbers[i];
+                }
+          }
+            return sumEvens;
+            
+        }
+
+        public bool IsSumOdd(List<int> numbers)
+        {
+            var sumOdd = new List<int>();
+            var sum = 0;
+            for (int i = 0; i < numbers.Count; i++)
+            {
+                sum += numbers[i];
+            }
+            if (sum % 2 != 0)
             {
                 return true;
             }
@@ -45,111 +111,17 @@ namespace ChallengesWithTestsMark8
             {
                 return false;
             }
-        }
 
-        public double SumOfMinAndMax(IEnumerable<double> numbers)
-        {
-            if (numbers == null)
-            {
-                return 0;
-            }
-
-            if (numbers.Count() == 0)
-            {
-                return 0;
-            }
-
-            return numbers.Min() + numbers.Max();
-        }
-
-        public int GetLengthOfShortestString(string str1, string str2)
-        {
-            if (str1.Length < str2.Length)
-            {
-                return str1.Length;
-            }
-            else
-            {
-                return str2.Length;
-            }
-        }
-
-        public int Sum(int[] numbers)
-        {
-            if (numbers == null)
-            {
-                return 0;
-            }
-
-            var sum = 0;
-
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                sum += numbers[i];
-            }
-
-            return sum;
-
-            //return numbers.Sum();
-        }
-
-        public int SumEvens(int[] numbers)
-        {
-            if (numbers == null)
-            {
-                return 0;
-            }
-
-            var evenSum = 0;
-
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                if (numbers[i] % 2 == 0)
-                {
-                    evenSum += numbers[i];
-                }
-            }
-
-            return evenSum;
-        }
-
-        public bool IsSumOdd(List<int> numbers)
-        {
-            if (numbers == null)
-            {
-                return false;
-            }
-
-            return (numbers.Sum() % 2 != 0);
         }
 
         public long CountOfPositiveOddsBelowNumber(long number)
         {
-            //var count = 0;
-
-            //if(number == 1 || number <= 0)
-            //{
-            //    return 0;
-            //}
-
-            //for (long i = number; i > 0; i--)
-            //{
-            //    if(i % 2 == 0)
-            //    {
-            //        count++;
-            //    }
-            //}
-
-            //return count;
-
-            if (number <= 0)
+          if (number == null)
             {
                 return 0;
             }
-            else
-            {
-                return number / 2;
-            }
+            return number / 2;
+        
         }
     }
 }
